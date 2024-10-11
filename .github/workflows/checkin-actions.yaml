@@ -1,5 +1,6 @@
 name: checkin-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
+
 on:
   schedule:
     - cron: "0 12 * * *"
@@ -8,19 +9,23 @@ on:
     types: [published]
   watch:
     types: [started]
+
 jobs:
   Checkin:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup timezone
-        uses: zcong1993/setup-timezone@v1.1.1
-        with:
-          timezone: Asia/Shanghai
-      - name: Run checkin
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+
       - run: npm install -g got@11.8.3
-      - run: node ./checkinL.js
-      - run: node ./checkinW.js
+
+      - run: node ./checkinL.js >> ./run.log 2>&1
+
+      - run: tail ./run.log
+
+      - run: node ./checkinW.js >> ./run.log 2>&1
+
+      - run: tail ./run.log
