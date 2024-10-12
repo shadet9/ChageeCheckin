@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is Checkin
 
 on:
   schedule:
-    - cron: "0 12 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
   release:
     types: [published]
@@ -22,18 +22,13 @@ jobs:
 
       - run: npm install -g got@11.8.3
 
-      - run: node ./checkinL.js >> ./run.log 2>&1
-
-      - run: tail ./run.log
-
-      - run: node ./checkinW.js >> ./run.log 2>&1
-
-      - run: tail ./run.log
-
-      - env:
-          NAME: DUCK
-          EMAIL: arielw@duck.com
       - run: |
+          node ./checkinL.js >> ./run.log 2>&1
+          node ./checkinW.js >> ./run.log 2>&1
+          tail ./run.log
+
+      - name: Git Configuration
+        run: |
           git config --global user.name "DUCk"
           git config --global user.email "arielw@duck.com"
           git add .
