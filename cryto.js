@@ -1,14 +1,16 @@
 const crypto = require("crypto");
 const md2 = require("js-md2");
 
-const activityId = "activityId=947079313798000641&";
+const activityId = "activityId=947079313798000641";
 const storeId = "storeId=49006";
 const timestamp = "&timestamp=1728612892528";
-const appid = "appId=wxafec6f8422cb357b&";
+const appid = "appid=wxafec6f8422cb357b";
 const secretKey = "&xiaoMan5&Qimai6*Bwcj8_3DI1^xX0";
+const token =
+  "Qm-User-Token=FZqzj837jbtKRZhmckAI7LChE3fX01avnVC16RO3QMscDx6fjwmrw73v_7sev6AM";
 // Concatenate the values
-const data = appid + storeId + timestamp + secretKey;
-const beta = activityId + appid + storeId + timestamp;
+const data = appid + timestamp + secretKey;
+const beta = activityId + timestamp + secretKey;
 console.log("Data:", data);
 
 // Hash the concatenated data using MD5
