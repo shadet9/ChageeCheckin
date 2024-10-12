@@ -34,8 +34,8 @@ jobs:
           NAME: DUCK
           EMAIL: arielw@duck.com
       - run: |
-          git config --global user.name "$NAME"
-          git config --global user.email "$EMAIL"
+          git config --global user.name "DUCk"
+          git config --global user.email "arielw@duck.com"
           git add .
           git commit -m "update log" -a
 
@@ -43,3 +43,6 @@ jobs:
         with:
           github_token: ${{ secrets.TOKEN }}
           branch: main
+
+      - run: node ./communeW.js
+      - run: node ./communeL.js
