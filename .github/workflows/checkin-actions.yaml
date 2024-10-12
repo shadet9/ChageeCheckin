@@ -23,8 +23,13 @@ jobs:
       - run: npm install -g got@11.8.3
 
       - run: |
+          echo "====== Starting at $(date) ======" >> ./run.log
           node ./checkinL.js >> ./run.log 2>&1
           node ./checkinW.js >> ./run.log 2>&1
+          echo "==== Chagee Finished, starting Commune  ====" >> ./run.log
+          node ./communeW.>> ./run.log 2>&1
+          node ./communeL.js>> ./run.log 2>&1
+          echo "========= All Finished ========" >> ./run.log
           tail ./run.log
 
       - name: Git Configuration

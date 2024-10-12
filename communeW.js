@@ -51,11 +51,11 @@ const got = require("got");
 
     const body = JSON.parse(resp.body || "{}");
     if (body.code == 200) {
-      console.log(`签到成功,${body.msg}`);
+      console.log(`Commune签到成功,${body.msg}`);
     } else if (body.code == 415) {
       console.log(`${body.msg}`);
     } else {
-      console.log(`签到失败(${body.msg})`);
+      console.log(`Commune签到失败(${body.msg})`);
     }
   } catch (err) {
     console.error(`Send checkin request error:`, err);
