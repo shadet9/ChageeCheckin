@@ -30,17 +30,16 @@ jobs:
 
       - run: tail ./run.log
 
-      - name: Commit log
-      env:
-        NAME: DUCK
-        EMAIL: arielw@duck.com
-      run: |
-        git config --global user.name "$NAME"
-        git config --global user.email "$EMAIL"
-        git add .
-        git commit -m "update log" -a
-    - name: Push log
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        branch: main
+      - env:
+          NAME: DUCK
+          EMAIL: arielw@duck.com
+      - run: |
+          git config --global user.name "$NAME"
+          git config --global user.email "$EMAIL"
+          git add .
+          git commit -m "update log" -a
+
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          branch: main
