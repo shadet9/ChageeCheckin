@@ -26,7 +26,7 @@ jobs:
           echo "====== Starting at $(TZ='Asia/Hong_Kong' date) ======" >> ./run.log
           node ./checkinL.js >> ./run.log 2>&1
           node ./checkinW.js >> ./run.log 2>&1
-          echo ======= Chagee Finished =======" >> ./run.log
+          echo "======= Chagee Finished =======" >> ./run.log
           tail ./run.log
 
       - name: Git Configuration
